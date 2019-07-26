@@ -1,0 +1,78 @@
+ {{include './header.html'}}
+
+ 
+<main class="container secondbox">
+    <aside class="l-box">
+
+        <!-- 搜索 -->
+        <div class="search">
+            <form action="">
+                <input type="text" name="keyword" value="请输入关键字" class="input-text">
+                <input type="submit" name="Submit" value="搜索" class="input-submit">
+            </form>
+        </div>
+
+        <!--存档  -->
+        <div class="cundang">
+            <h2>存档</h2>
+            <ul>
+                    {{each msgs msg}}
+                    <li> 
+                        <a href="/details/{{msg._id}}" target="_blank">{{msg.title}}</a>                  
+                    </li>
+                   {{/each}}
+            </ul>
+        </div>
+        <!-- 关注我 -->
+        <div class="guanzhu">
+            <h2>关注我</h2>
+            <ul>
+                <img src="/img/1563431722.png">
+            </ul>
+        </div>
+    </aside>
+    <main class="r-box publish">
+        <div id="edit-headerimg">
+            <form action="/upload/header" method="post" enctype="multipart/form-data">
+                <div class="header-img">
+                    <img class="head-img" src="{{user.headerurl}}" alt="">
+                    <span class="edit-btn">选择头像</span>                  
+                    <input type="file" name="headerimg" id="headerimg" accept="image/*" hidden>
+                </div>
+                <button type="submit">修改</button>
+            </form>
+        </div> 
+      
+       
+
+
+    </main>
+
+
+</main>
+
+
+
+
+{{include './footer.html'}}
+
+<script>
+    document.querySelector('.edit-btn').onclick = function(){
+      
+        document.querySelector('#headerimg').click();
+    };
+    document.querySelector('#headerimg').onchange = function(){
+        
+        var file = this.files[0];
+        document.querySelector('.head-img').src = URL.createObjectURL(file);
+    }
+    
+    
+    </script>
+
+
+ 
+
+
+
+ 

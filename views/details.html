@@ -1,0 +1,133 @@
+{{include './header.html'}}
+
+
+<main class="container secondbox">
+    <aside class="l-box">
+        <!-- 关于 -->
+        <div class="about-me">
+            <h2>关于</h2>
+            <ul class="clearfix">
+                <i><img src="/img/王昭君.png" alt=""></i>
+                {{if user}}
+                <form action="">
+                    <label for="username">姓名：<input type="text" name="username" value="{{user.username}}"></label><br>
+                    <label>邮箱：<input type="text" name="email" value="{{user.email}}"></label><br>
+                </form>
+                </form>
+                <br>
+                <p>
+                    <b> {{user.username}} </b>
+                    ，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。
+                </p>
+            </ul>
+        </div>
+        {{else}}
+        <form action="">
+            <label for="username">姓名：<input type="text" name="username" value=" "></label><br>
+            <label>邮箱：<input type="text" name="email" value=""></label><br>
+        </form>
+
+        </ul>
+        </div>
+        {{/if}}
+        <!-- 搜索 -->
+        <div class="search">
+            <form action="">
+                <input type="text" name="keyword" value="请输入关键字" class="input-text">
+                <input type="submit" name="Submit" value="搜索" class="input-submit">
+            </form>
+        </div>
+
+        <!--存档  -->
+        <div class="cundang">
+            <h2>存档</h2>
+            <ul>
+                    {{each msgs msg}}
+                    <li> 
+                        <a href="/details/{{msg._id}}" target="_blank">{{msg.title}}</a>                  
+                    </li>
+                   {{/each}}
+            </ul>
+        </div>
+        <!-- 关注我 -->
+        <div class="guanzhu">
+            <h2>关注我</h2>
+            <ul>
+                <img src="/img/1563431722.png">
+            </ul>
+        </div>
+    </aside>
+    <main class="r-box">
+
+        <ul class="r-box-menu">
+            <li class="details">
+                <h3> <a href="/details/{{_id}}" target="_blank" class="details-a">{{title}}</a> </h3><br>
+                <span>作者：</span>
+                <a href="#">{{author}}</a>
+                <span>日期：</span>
+                <a href="#">{{time}} |</a>
+                <span>标签：</span>
+                <a href="tag">{{each tag tag}} {{tag}} {{/each}}</a>
+                </h3>
+                <p class="content">{{msg}}</p>
+                <span>阅读：</span><a href="#">{{count}}次</a>
+                <span>评论：</span><a href="#"> {{reples.length}}条</a> <br>
+                {{if user.username==author}}
+                <a href="/edit/{{_id}}" class="edit">编辑</a>&emsp;&emsp;
+                <a href="/delet/{{_id}}" class="edit delet">删除</a>
+                {{/if}}
+
+                <div class="msg-list">
+
+                    <div class="reply">
+                        <ul class="reply-ul">
+
+                            {{each reples reply}}
+
+                            <li>
+                                <p>{{reply.username}}:{{reply.msg}}</p>
+                                <p style="text-align: right;"> {{reply.time}} 回复</p>
+                            </li>
+                            {{/each}}
+                        </ul>
+
+                        {{if user}}
+                        <form action="/add/reply" method="post">
+
+                            <input type="text" name="_id" value="{{_id}}" hidden>
+
+                            <textarea name="msg" id="reply" class="reply-text"></textarea>
+                            <br>
+
+                            <button type="submit" class="reply-btn">回复</button>
+                        </form>
+                        {{/if}}
+                    </div>
+                </div>
+
+
+
+
+            </li>
+
+        </ul>
+
+
+    </main>
+</main>
+
+
+
+{{include './footer.html'}}
+<script>
+    var delet = document.querySelector('.delet');
+    delet.onclick = function (ev) {
+        var con = confirm('确认要删除吗？')
+        if (con != true) {
+            ev.preventDefault()
+        }
+    }
+
+
+
+</script>

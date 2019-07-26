@@ -1,0 +1,59 @@
+{{include './header.html'}}
+<main class="container secondbox">
+    <aside class="l-box">
+
+        <!-- 搜索 -->
+        <div class="search">
+            <form action="">
+                <input type="text" name="keyword" value="请输入关键字" class="input-text">
+                <input type="submit" name="Submit" value="搜索" class="input-submit">
+            </form>
+        </div>
+
+        <!--存档  -->
+        <div class="cundang">
+            <h2>存档</h2>
+            <ul>
+                    {{each msgs msg}}
+                    <li> 
+                        <a href="/details/{{msg._id}}" target="_blank">{{msg.title}}</a>                  
+                    </li>
+                   {{/each}}
+            </ul>
+        </div>
+        <!-- 关注我 -->
+        <div class="guanzhu">
+            <h2>关注我</h2>
+            <ul>
+                <img src="/img/1563431722.png">
+            </ul>
+        </div>
+    </aside>
+    <main class="r-box publish">
+       
+        <form action="/edit" method="post">
+            <label for="title">标题：<input type="text" name="title" value="{{title}}"></label><br>
+            <label for="tag">标签：<input type="text" name="tag" value="{{tag[0]}}"><input type="text" name="tag" value="{{tag[1]}}"><input type="text"
+                    name="tag" value="{{tag[2]}}"></label><br>
+            <label for="msg">内容：</label><br>
+            <textarea name="msg" id="msg" cols="30" rows="10" required>{{msg}}</textarea><br>
+            <input type="text" name="id" id="" value="{{_id}}">
+            <button type="submit">
+                发布
+            </button>{{error}}
+            
+        </form>
+       
+
+
+    </main>
+
+
+</main>
+
+
+
+
+
+
+{{include './footer.html'}}

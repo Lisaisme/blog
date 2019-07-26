@@ -1,0 +1,19 @@
+{{include './header.html'}}
+
+
+<main class="container secondbox">
+    <div class="log" id="regist">
+            <form action="/regist" method="post">
+                <label>&emsp;&emsp;账号：<input type="text" name="username" required></label>{{error}}<br>
+                <label>&emsp;&emsp;密码：<input type="password" name="password" required></label><br>
+                <label>确认密码：<input type="password" name="repassword" required></label>{{error1}}<br>
+                <label>&emsp;&emsp;邮箱：<input type="text" name="email" required></label><br>
+                <button type="submit">注册</button>
+            </form>
+
+    </div>
+  
+</main>
+
+
+{{include './footer.html'}}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>博客</title>
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+
+<body>
+    <header class="">
+        <!-- 头部导航栏 -->
+        <nav class="container clearfix">
+            <!-- 左边个人介绍 -->
+            {{if user}}
+            <div class="boxleft">
+                <a href="Javascript:;">{{user.username}}个人博客</a>
+            </div>
+            {{else}}
+            <div class="boxleft">
+                <a href="Javascript:;">个人博客</a>
+            </div>
+            {{/if}}
+            <!-- 右边具体的个人信息 -->
+            <div class="boxright">
+                <ul class="clearfix">
+                    {{if user}}
+                    <li class="logout">
+                    
+                            <img src="{{user.headerurl}}" alt="">
+                            
+                        
+                       
+                        <a style="color: blue;" href="/edits/userinfo">{{user.username}}</a>
+                        <a href="/logout" class="boxright-selected">退出登录</a>
+                    </li>
+                    {{else}}
+                    <li class="login">
+                        <a href="/login" class="boxright-selected">登录</a>
+                    </li>
+                    <li class=""><a href="/regist">注册</a></li>
+                    {{/if}}                 
+                    <li class=""><a href="/">首页</a></li>
+                    <li class=""><a href="/cundang">存档</a></li>
+                    <li class=""><a href="/biaoqian">标签</a></li>
+                    <li class=""><a href="/publish">发布</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>

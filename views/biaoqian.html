@@ -1,0 +1,69 @@
+{{include './header.html'}}
+
+
+<main class="container secondbox">
+    <aside class="l-box">
+        <!-- 关于 -->
+        <div class="about-me">
+            <h2>关于</h2>
+            <ul class="clearfix">
+                <i><img src="/img/王昭君.png" alt=""></i>
+                {{if user}}
+                <form action="">
+                    <label for="username">姓名：<input type="text" name="username" value="{{user.username}}"></label><br>
+                    <label>邮箱：<input type="text" name="email" value="{{user.email}}"></label><br>
+                </form>
+                </form>
+                <br>
+                <p>
+                    <b> {{user.username}} </b>
+                    ，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。
+                </p>
+            </ul>
+        </div>
+        {{else}}
+        <form action="">
+            <label for="username">姓名：<input type="text" name="username" value=" "></label><br>
+            <label>邮箱：<input type="text" name="email" value=""></label><br>
+        </form>
+
+        </ul>
+        </div>
+        {{/if}}
+        <!-- 搜索 -->
+        <div class="search">
+            <form action="/search">
+                <input type="text" name="search" class="input-text">
+                <input type="submit" name="submit" value="搜索" class="input-submit">
+            </form>
+        </div>
+
+        <!--存档  -->
+        <div class="cundang">
+            <h2>存档</h2>
+            <ul>
+                    {{each msgs msg}}
+                    <li> 
+                        <a href="/details/{{msg._id}}" target="_blank">{{msg.title}}</a>                  
+                    </li>
+                   {{/each}}
+            </ul>
+        </div>
+        <!-- 关注我 -->
+        <div class="guanzhu">
+            <h2>关注我</h2>
+            <ul>
+                <img src="/img/1563431722.png">
+            </ul>
+        </div>
+    </aside>
+    <main class="r-box">
+            {{each msgs tag i}}
+            <a href="/tag/{{tag}}" id="cbd"> {{msgs[i]}} </a>
+            {{/each}}      
+    </main>
+</main>
+
+
+
+{{include './footer.html'}}

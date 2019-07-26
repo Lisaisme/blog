@@ -1,0 +1,71 @@
+{{include './header.html'}}
+
+<main class="container secondbox">
+    <aside class="l-box">
+
+        <!-- 搜索 -->
+        <div class="search">
+            <form action="">
+                <input type="text" name="keyword" value="请输入关键字" class="input-text">
+                <input type="submit" name="Submit" value="搜索" class="input-submit">
+            </form>
+        </div>
+
+        <!--存档  -->
+        <div class="cundang">
+            <h2>存档</h2>
+            <ul>
+                    {{each msgs msg}}
+                    <li> 
+                        <a href="/details/{{msg._id}}" target="_blank">{{msg.title}}</a>                  
+                    </li>
+                   {{/each}}
+            </ul>
+        </div>
+        <!-- 关注我 -->
+        <div class="guanzhu">
+            <h2>关注我</h2>
+            <ul>
+                <img src="/img/1563431722.png">
+            </ul>
+        </div>
+    </aside>
+    <main class="r-box">
+      
+        <div class="">
+        
+            {{each year y}}
+            <h2>{{y}}</h2>
+            {{each msgs msg i}}
+            {{if msg.time.slice(0,5)==y}}
+            <div>
+                <span>{{msg.time}}</span>
+                <a href="/details/{{msg._id}}" target="_blank">{{msg.title}}</a>
+            </div>
+            {{/if}}
+            {{/each}}
+            {{/each}}
+        </div>
+
+
+          {{if page>1 }}
+        <a href="?page={{page-1}}">上一页</a>
+        {{/if}}
+        <span>第{{page}}页</span>
+        {{if page<pages }}
+        <a href="?page={{page+1}}">下一页</a>
+        {{/if}}
+
+
+
+
+    </main>
+
+
+</main>
+
+
+
+
+
+{{include './footer.html'}}
